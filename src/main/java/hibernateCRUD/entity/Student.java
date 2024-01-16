@@ -1,10 +1,8 @@
 package hibernateCRUD.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
+@SuppressWarnings("JpaAttributeTypeInspection")
 @Entity
 public class Student {
     @Id
@@ -12,6 +10,8 @@ public class Student {
     private int id;
     private String name;
 
+    @ManyToOne
+    public Teacher teacher;
     public Student(){
 
     }
@@ -30,6 +30,14 @@ public class Student {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Teacher getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
     }
 
     @Override
